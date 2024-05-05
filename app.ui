@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>790</width>
+    <height>651</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Age &amp; Gender Detection</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="cameraFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>480</width>
+      <height>340</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>480</width>
+      <height>340</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>480</width>
+      <height>340</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="cameraLabel">
+       <property name="text">
+        <string>CAM 0</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="optionsFrame">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>10</y>
+      <width>290</width>
+      <height>340</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>290</width>
+      <height>340</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QGroupBox" name="drawOptionsGroupbox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>82</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>82</width>
+       <height>111</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Draw</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="facesCheckbox">
+        <property name="text">
+         <string>Faces</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="ageCheckbox">
+        <property name="text">
+         <string>Age</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="genderCheckbox">
+        <property name="text">
+         <string>Gender</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="toggleDrawButton">
+        <property name="text">
+         <string>Toggle</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="gatherGroupbox">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>70</y>
+       <width>181</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>121</width>
+       <height>111</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Gather</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="timeLayout">
+        <item>
+         <widget class="QLabel" name="perSecLabel">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Per sec.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="timeSpinbox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="suffix">
+           <string>s</string>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+          <property name="value">
+           <number>3</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="startButton">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="gatherStatusLabel">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #f0ad4e;</string>
+        </property>
+        <property name="text">
+         <string>Stopped</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>203</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="camerasLayout">
+      <item>
+       <widget class="QLabel" name="camerasLabel">
+        <property name="text">
+         <string>Cameras</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="camerasCombobox"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="toggleCameraButton">
+        <property name="text">
+         <string>Toggle</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="dataFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>480</width>
+      <height>260</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>480</width>
+      <height>260</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QTableWidget" name="table">
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>90</number>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>#</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Age</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Gender</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Datetime</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Cam</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="exportFrame">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>350</y>
+      <width>290</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>290</width>
+      <height>260</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="dataGroupbox">
+       <property name="minimumSize">
+        <size>
+         <width>121</width>
+         <height>241</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>121</width>
+         <height>241</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Data</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QPushButton" name="reloadButton">
+          <property name="text">
+           <string>Reload</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="clearButton">
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deleteDBButton">
+          <property name="minimumSize">
+           <size>
+            <width>101</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton#deleteDBButton{
+	background: rgba(217, 83, 79, 1);
+	color: #f7f7f7;
+	border: 2px solid rgba(217, 83, 79, 1);
+	border-radius: 7px;
+	font-weight: 700;
+}
+
+QPushButton#deleteDBButton:hover{
+	background: rgba(217, 83, 79, 0.65);
+}
+
+QPushButton#deleteDBButton:pressed{
+	background: rgba(217, 83, 79, 0.85);
+}</string>
+          </property>
+          <property name="text">
+           <string>Delete Database</string>
+          </property>
+          <property name="autoRepeat">
+           <bool>false</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QGroupBox" name="exportGroupbox">
+       <property name="minimumSize">
+        <size>
+         <width>141</width>
+         <height>241</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Export</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="exportAsLabel">
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Export as</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="exportButtonLayout">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="exportExcelButton">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#exportExcelButton{
+	background: rgba(29, 111, 66, 1);
+	border: 2px solid rgba(29, 111, 66, 1);
+	border-radius: 7px;
+	color: #f7f7f7;
+	font-weight: 700;
+}
+
+QPushButton#exportExcelButton:hover{
+	background: rgba(29, 111, 66, 0.65);
+}
+
+QPushButton#exportExcelButton:pressed{
+	background: rgba(29, 111, 66, 0.85);
+}</string>
+            </property>
+            <property name="text">
+             <string>Excel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="exportSqlButton">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#exportSqlButton{
+	background: rgba(91, 192, 222, 1);
+	border: 2px solid rgba(91, 192, 222, 1);
+	border-radius: 7px;
+	color: #f7f7f7;
+	font-weight: 700;
+}
+
+QPushButton#exportSqlButton:hover{
+	background: rgba(91, 192, 222, 0.65);
+}
+
+QPushButton#exportSqlButton:pressed{
+	background: rgba(91, 192, 222, 0.85);
+}</string>
+            </property>
+            <property name="text">
+             <string>Sql</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="exportCsvButton">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#exportCsvButton{
+	background: rgba(2, 117, 216, 1);
+	border: 2px solid rgba(2, 117, 216, 1);
+	border-radius: 7px;
+	color: #f7f7f7;
+	font-weight: 700;
+}
+
+QPushButton#exportCsvButton:hover{
+	background: rgba(2, 117, 216, 0.65);
+}
+
+QPushButton#exportCsvButton:pressed{
+	background: rgba(2, 117, 216, 0.85);
+}</string>
+            </property>
+            <property name="text">
+             <string>Csv</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="exportJsonButton">
+            <property name="minimumSize">
+             <size>
+              <width>121</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#exportJsonButton{
+	background: rgba(255, 193, 7, 1);
+	border: 2px solid rgba(255, 193, 7, 1);
+	border-radius: 7px;
+	color: #f7f7f7;
+	font-weight: 700;
+}
+
+QPushButton#exportJsonButton:hover{
+	background: rgba(255, 193, 7, 0.65);
+}
+
+QPushButton#exportJsonButton:pressed{
+	background: rgba(255, 193, 7, 0.85);
+}</string>
+            </property>
+            <property name="text">
+             <string>Json</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
