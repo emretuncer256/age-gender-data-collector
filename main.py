@@ -3,10 +3,13 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from app_ui import Ui_MainWindow
+from reporting import ReportWindow
 from utils import FaceDetector
+from logger import logger
 
 from db import DB
 
+import sys
 import pandas as pd
 
 
@@ -49,6 +52,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.deleteDBButton.clicked.connect(self.deleteDatabase)
 
+        self.visualizeButton.clicked.connect(self.openVisualizationPanel)
+
         self.exportExcelButton.clicked.connect(self.exportAsExcel)
         self.exportSqlButton.clicked.connect(self.exportAsSql)
         self.exportCsvButton.clicked.connect(self.exportAsCsv)
@@ -68,7 +73,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         )
 
     def loadCameras(self):
-        # TODO: a logic to list available cameras
+        # TODO: Implement logic to list available cameras
         cameraList = [0, 1, 2]
         for cam in cameraList:
             self.camerasCombobox.addItem(f"CAM {cam}", cam)
@@ -91,6 +96,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.table.setItem(rowPos, 2, QTableWidgetItem(str(g)))
             self.table.setItem(rowPos, 3, QTableWidgetItem(str(d)))
             self.table.setItem(rowPos, 4, QTableWidgetItem(str(c)))
+        logger.info("Data loaded successfully")
 
     def setCurrentData(self, data: list):
         self.currentData = data
@@ -123,6 +129,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.startButton.setText("Stop")
         self.gatherStatusLabel.setText("Started")
         self.gatherStatusLabel.setStyleSheet("background: #5cb85c;")
+        logger.info("Gathering started")
 
     def stopGathering(self):
         if not self.timer.isActive():
@@ -132,6 +139,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.gatherStatusLabel.setText("Stopped")
         self.gatherStatusLabel.setStyleSheet("background: #f0ad4e;")
         self.currentData = None
+        logger.info("Gathering stopped")
 
     def startButton_Clicked(self):
         if not self.timer.isActive():
@@ -159,6 +167,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         button = dlg.exec()
         if button == QMessageBox.StandardButton.Yes:
             self.db.clearDatabase()
+            logger.info("Database deleted")
             self.loadData()
 
     def dataToDataFrame(self):
@@ -221,8 +230,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMessageBox.information(self, "Data exported",
                                 "The data exported as json successfully.")
 
+    def showReportWindow(self):
+        self.reportWindow = ReportWindow(self)
+        self.reportWindow.showMaximized()
+        logger.info("Report window created successfully")
 
-app = QApplication([])
-window = MainWindow()
-window.show()
-app.exec()
+    def openVisualizationPanel(self):
+        if not hasattr(self, "reportWindow"):
+            self.reportThread = QThread()
+            self.reportThread.started.connect(self.showReportWindow)
+            self.reportThread.start()
+            logger.info("Report thread started successfully")
+        elif not self.reportWindow.isVisible():
+            if self.reportThread.isRunning():
+                self.reportThread.terminate()
+            self.reportWindow.close()
+
+            del self.reportThread
+            del self.reportWindow
+            logger.info("Report window and thread destroyed")
+            self.openVisualizationPanel()
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    app.exec()

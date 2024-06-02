@@ -1,6 +1,7 @@
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import *
+from logger import logger
 
 import cv2
 
@@ -43,7 +44,7 @@ ageNet = cv2.dnn.readNet(ageModel, ageProto)
 genderNet = cv2.dnn.readNet(genderModel, genderProto)
 
 MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
-ageList = ['(0-2)', '(4-6)', '(8-12)', '(13-17)', '(18, 24)',
+ageList = ['(0-2)', '(4-6)', '(8-12)', '(13-17)', '(18-24)',
            '(25-32)', '(38-43)', '(48-53)', '(60-100)']
 genderList = ['Male', 'Female']
 
@@ -138,13 +139,16 @@ class FaceDetector(QThread):
 
     def toggleDraw(self):
         self.canDraw = not self.canDraw
+        logger.info(f"Draw is toggled to {self.canDraw}")
 
     def setDraw(self, a0: bool):
         if self.canDraw != a0:
             self.canDraw = a0
+            logger.info(f"Draw is set to {a0}")
 
     def toggleDetect(self):
         self.canDetect = not self.canDetect
+        logger.info(f"Detection is toggled to {self.canDetect}")
 
     def setDetect(self, a0: bool):
         if self.canDetect != a0:
@@ -153,10 +157,13 @@ class FaceDetector(QThread):
                 self.status.emit(f"CAM {self.cameraIndex} starting")
             else:
                 self.status.emit("Camera closed")
+            logger.info(f"Detection is set to {a0}")
 
     def setCameraIndex(self, a0: int):
         self.cameraIndex = a0
+        logger.info(f"Camera changed to index {a0}")
 
     def setDrawOption(self, opt: str, a0: bool):
         if hasattr(self, opt):
             setattr(self, opt, a0)
+            logger.info(f"Draw option '{opt}' is set to {a0}")

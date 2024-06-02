@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\app.ui'
+# Form implementation generated from reading ui file 'app.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -103,6 +103,24 @@ class Ui_MainWindow(object):
         self.toggleCameraButton = QtWidgets.QPushButton(parent=self.layoutWidget)
         self.toggleCameraButton.setObjectName("toggleCameraButton")
         self.camerasLayout.addWidget(self.toggleCameraButton)
+        self.visualizeButton = QtWidgets.QPushButton(parent=self.optionsFrame)
+        self.visualizeButton.setGeometry(QtCore.QRect(160, 290, 121, 41))
+        self.visualizeButton.setStyleSheet("QPushButton#visualizeButton{\n"
+"    background: rgba(144,238,144,1);\n"
+"    border: 2px solid rgba(144,238,144,1);\n"
+"    border-radius: 7px;\n"
+"    color: #475c6c;\n"
+"    font-weight: 700;\n"
+"}\n"
+"\n"
+"QPushButton#visualizeButton:hover{\n"
+"    background: rgba(144,238,144,0.65);\n"
+"}\n"
+"\n"
+"QPushButton#visualizeButton:pressed{\n"
+"    background: rgba(144,238,144,0.85);\n"
+"}")
+        self.visualizeButton.setObjectName("visualizeButton")
         self.dataFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.dataFrame.setGeometry(QtCore.QRect(10, 350, 480, 260))
         self.dataFrame.setMinimumSize(QtCore.QSize(480, 260))
@@ -296,6 +314,7 @@ class Ui_MainWindow(object):
         self.gatherStatusLabel.setText(_translate("MainWindow", "Stopped"))
         self.camerasLabel.setText(_translate("MainWindow", "Cameras"))
         self.toggleCameraButton.setText(_translate("MainWindow", "Toggle"))
+        self.visualizeButton.setText(_translate("MainWindow", "Visualize"))
         item = self.table.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "#"))
         item = self.table.horizontalHeaderItem(1)
@@ -312,7 +331,7 @@ class Ui_MainWindow(object):
         self.deleteDBButton.setText(_translate("MainWindow", "Delete Database"))
         self.exportGroupbox.setTitle(_translate("MainWindow", "Export"))
         self.exportAsLabel.setText(_translate("MainWindow", "Export as"))
-        self.exportExcelButton.setText(_translate("MainWindow", "Excel"))
-        self.exportSqlButton.setText(_translate("MainWindow", "Sql"))
-        self.exportCsvButton.setText(_translate("MainWindow", "Csv"))
-        self.exportJsonButton.setText(_translate("MainWindow", "Json"))
+        self.exportExcelButton.setText(_translate("MainWindow", ".xlsx"))
+        self.exportSqlButton.setText(_translate("MainWindow", ".sql"))
+        self.exportCsvButton.setText(_translate("MainWindow", ".csv"))
+        self.exportJsonButton.setText(_translate("MainWindow", ".json"))

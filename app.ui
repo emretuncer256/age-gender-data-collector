@@ -260,6 +260,36 @@
       </item>
      </layout>
     </widget>
+    <widget class="QPushButton" name="visualizeButton">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>290</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#visualizeButton{
+	background: rgba(144,238,144,1);
+	border: 2px solid rgba(144,238,144,1);
+	border-radius: 7px;
+	color: #475c6c;
+	font-weight: 700;
+}
+
+QPushButton#visualizeButton:hover{
+	background: rgba(144,238,144,0.65);
+}
+
+QPushButton#visualizeButton:pressed{
+	background: rgba(144,238,144,0.85);
+}</string>
+     </property>
+     <property name="text">
+      <string>Visualize</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="dataFrame">
     <property name="geometry">
@@ -495,7 +525,7 @@ QPushButton#exportExcelButton:pressed{
 }</string>
             </property>
             <property name="text">
-             <string>Excel</string>
+             <string>.xlsx</string>
             </property>
            </widget>
           </item>
@@ -525,7 +555,7 @@ QPushButton#exportSqlButton:pressed{
 }</string>
             </property>
             <property name="text">
-             <string>Sql</string>
+             <string>.sql</string>
             </property>
            </widget>
           </item>
@@ -555,7 +585,7 @@ QPushButton#exportCsvButton:pressed{
 }</string>
             </property>
             <property name="text">
-             <string>Csv</string>
+             <string>.csv</string>
             </property>
            </widget>
           </item>
@@ -585,7 +615,7 @@ QPushButton#exportJsonButton:pressed{
 }</string>
             </property>
             <property name="text">
-             <string>Json</string>
+             <string>.json</string>
             </property>
            </widget>
           </item>
