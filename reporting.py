@@ -37,6 +37,8 @@ class ReportWindow(QMainWindow):
     def __init__(self, parent=None) -> None:
         super(ReportWindow, self).__init__(parent)
 
+        self.setWindowTitle("Report")
+
         self.mainLayout = QHBoxLayout()
         self.container = QWidget()
         self.chartLayout = QVBoxLayout()

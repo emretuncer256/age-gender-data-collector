@@ -31,6 +31,7 @@ def __plt2Bytes(plt) -> io.BytesIO:
     buffer = io.BytesIO()
     plt.savefig(buffer, format='png')
     buffer.seek(0)
+    plt.close()
 
     return buffer
 
