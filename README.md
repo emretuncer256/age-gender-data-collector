@@ -55,10 +55,21 @@ Run the application using the following command:
 python main.py
 ```
 
+1. When application launches, it should look like this:<br>
+<p align="center">
+  <img src="images/mainWindow.png" alt="Main Window">
+</p>
+
+2. When you click on the "Visualize" button, a report window will appear.
+<p align="center">
+  <img src="images/reportWindow.png" alt="Report Window">
+</p>
+
 ## File Structure
 ```
 age-gender-data-collector/
 ├── weights/                # Pre-trained model weights
+├── images/                 # Screenshots of the project
 ├── .gitignore
 ├── app.ui                  # PyQt6 UI design file
 ├── app_ui.py               # PyQt6 UI logic
@@ -73,6 +84,8 @@ age-gender-data-collector/
 ├── test_pdf_viewer.py      # Tests for PDF viewer
 ├── utils.py                # Helper functions
 ├── LICENSE                 # License
+├── report-2024-06-07.pdf   # Sample Report
+├── ProjectPaper.pdf        # Project document
 └── README.md
 ```
 
